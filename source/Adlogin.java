@@ -35,6 +35,23 @@ public class Adlogin extends JFrame implements SQL{
 			setVisible(true);
 			setSize(400,400);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            b1.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent ae){
+					try{		
+			String sql="select * from student where username='"+t1.getText()+"' and pass='"+t2.getText()+"'";
+			Object conn;
+            PreparedStatement ps=((Object) conn).prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()){
+				JOptionPane.showMessageDialog(null,"Login Successfully");
+			}else{
+				JOptionPane.showMessageDialog(null,"Invalid username or password");
+				}
+			}catch(Exception e){System.out.println(e);}
+
+					}
+				}
+			);
 			
 		}
 }
